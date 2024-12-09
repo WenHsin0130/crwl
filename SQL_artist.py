@@ -3,7 +3,7 @@ import os
 
 # 設定輸入和輸出檔案的路徑
 input_csv_path = os.path.join('csv', 'artist.csv')
-output_sql_path = os.path.join('SQL', 'insert_statements.sql')
+output_sql_path = os.path.join('SQL', 'insert_artist.sql')
 
 # 確保 SQL 資料夾存在
 os.makedirs(os.path.dirname(output_sql_path), exist_ok=True)

@@ -2,7 +2,7 @@ from utils import is_data_fetched
 from utils import fetch_html
 from utils import export_to_csv
 
-def fetch_language_list(url, file_name):
+def fetch_category_list(url, file_name):
     """
     爬取網頁中的語言名稱。
 

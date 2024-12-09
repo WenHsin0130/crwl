@@ -58,38 +58,38 @@ session_list = [
     {"url": "sclasca.asp?mut=C&s2=3&h=2&gh=12", "category": "K", "type": "樂團團體"},
 
     # 西洋
-    {"url": "listartame.asp?mut=B&art=A&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=B&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=C&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=D&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=E&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=F&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=G&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=H&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=I&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=J&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=K&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=L&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=M&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=N&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=O&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=P&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=Q&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=R&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=S&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=T&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=U&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=V&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=W&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=X&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=Y&stp=1", "category": "K", "type": ""},
-    {"url": "listartame.asp?mut=B&art=Z&stp=1", "category": "K", "type": ""}
+    {"url": "listartame.asp?mut=B&art=A&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=B&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=C&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=D&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=E&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=F&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=G&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=H&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=I&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=J&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=D&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=L&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=M&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=N&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=O&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=P&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=Q&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=R&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=S&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=T&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=U&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=V&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=W&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=X&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=Y&stp=1", "category": "D", "type": ""},
+    {"url": "listartame.asp?mut=B&art=Z&stp=1", "category": "D", "type": ""}
 ]
 
 # 初始化空的 language_list 列表，用於儲存爬蟲下來的值
 artist_list = []
 
-def fetch_language_list(url, file_name, artist_list_session, artist_type, category):
+def fetch_artist_list(url, file_name, artist_list_session, artist_type, category):
     """
     爬取網頁中的藝人。
 
@@ -133,10 +133,9 @@ def fetch_language_list(url, file_name, artist_list_session, artist_type, catego
         # 否則回傳 None
         return None
     
-
 # mut="分類" 下的 藝人列表
 for session in session_list:
     artist_list_session = session['url']
     artist_type = session['type']
     category = session['category']
-    fetch_language_list("https://www.5music.com.tw/", "artist.csv", artist_list_session, artist_type, category)
+    fetch_artist_list("https://www.5music.com.tw/", "artist.csv", artist_list_session, artist_type, category)

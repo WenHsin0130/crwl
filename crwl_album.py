@@ -1,6 +1,4 @@
 import random
-import re
-import requests
 
 from urllib.parse import urljoin
 from datetime import datetime
@@ -8,6 +6,10 @@ from utils import is_data_fetched
 from utils import fetch_html
 from utils import export_to_csv_album
 from utils import download_image
+from utils import get_categoryID_from_csv
+
+# 初始化商品列表
+product_list = []
 
 
 def get_product_sessions(category, page):
@@ -53,7 +55,7 @@ def get_product_details(product_session, product_all_elements, category):
 
     # 取得 商品圖片 <img class="img-responsive lazy">
     product_img = product_all_elements.find("img", class_="img-responsive lazy")
-    # download_image(product_img)
+    download_image(product_img)
 
     # 取得 商品條碼、商品編號、製作公司、發行公司、發行日期 區塊 <ul>
     product_ul = product_all_elements.find("ul", class_="reset specific")
@@ -70,9 +72,16 @@ def get_product_details(product_session, product_all_elements, category):
     else:
         formatted_barcode = None
 
-    # 取得 商品價錢區域
+    # 取得 商品價錢區域 <span class="new">
     product_price_sale = product_all_elements.find("div", class_="price sale")
-    price_span = product_price_sale.find("span", class_="new").text.strip().replace("$", "")
+    # 如果沒有現貨可能找不到該 span，因此若沒有成功取得則設為空值
+    if product_price_sale:
+        price_element = product_price_sale.find("span", class_="new")
+        price_span = price_element.text.strip().replace("$", "") if price_element else "0"
+    else:
+        price_span = "0"
+
+
 
     # 取得 商品說明 (使用 \n 保留換行)
     product_description = product_all_elements.find("div", class_="product-content-theme").text.replace("<br/>", "\n")
@@ -112,6 +121,7 @@ def get_product_details(product_session, product_all_elements, category):
 
     return product
 
+
 def fetch_product_list(url, file_name):
     """
     爬取指定語言分類下的專輯資料並匯出至 CSV 檔案
@@ -122,32 +132,33 @@ def fetch_product_list(url, file_name):
 
     """
 
-    # 語言類別
-    category = "A"
+    # 取得所有專輯類別
+    category_ids = get_categoryID_from_csv()
 
     # 頁面
     page = 1
 
-    # 將 session 結合五大唱片主連結 (url)，轉換成有意義的 url
-    product_session_list = get_product_sessions(category, page)
+    # 根據不同專輯類別取得唱片資訊
+    for category in category_ids:
+        print(f"---------------- Category{category} ----------------")
 
-    # 初始化商品列表
-    product_list = []
+        # 將 session 結合五大唱片主連結 (url)，轉換成有意義的 url
+        product_session_list = get_product_sessions(category, page)
 
-    for idx, product_session in enumerate(product_session_list):
-        product_url = urljoin(url, product_session)
+        for idx, product_session in enumerate(product_session_list):
+            product_url = urljoin(url, product_session)
 
-        # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
-        product_all_elements = fetch_html(product_url)
+            # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
+            product_all_elements = fetch_html(product_url)
 
-        # 處理 product_all_elements 的後續操作
-        print(f"Processing product at index {idx}: {product_url}")
+            # 處理 product_all_elements 的後續操作
+            print(f"Processing category {category} at index {idx}: {product_url}")
 
-        # 將 "CategoryID": category 添加到 product_details 字典中
-        product_details = get_product_details(product_session, product_all_elements, category)
+            # 將 "CategoryID": category 添加到 product_details 字典中
+            product_details = get_product_details(product_session, product_all_elements, category)
 
-        # 將 product 資料加入列表
-        product_list.extend(product_details)
+            # 將 product 資料加入列表
+            product_list.extend(product_details)
     
     # 使用爬取的資料匯出 product 的 csv 檔案
     export_to_csv_album(product_list, file_name)

@@ -65,7 +65,7 @@ def download_image(img):
             response.raise_for_status()  # 檢查請求是否成功
 
             # 保存圖片的路徑
-            image_save_dir="fivebig/image"
+            image_save_dir="image"
             image_name = os.path.basename(image_url)
 
             save_path = os.path.join(image_save_dir, image_name)
@@ -81,13 +81,32 @@ def download_image(img):
         print("未找到圖片")
 
 
+def get_categoryID_from_csv():
+    # Specify the input CSV path
+    input_csv_path = 'csv/category_list_for_album.csv'
+
+    # Read CSV and get all CategoryID values
+    category_ids = []
+
+    with open(input_csv_path, 'r', encoding='utf-8-sig') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        for row in csv_reader:
+            category_id = row['CategoryID']
+            category_ids.append(category_id)
+
+    # Print all CategoryID values
+    print("Successfully Get CategoryID values")
+
+    return category_ids
+
+
 def export_to_csv(data_list, file_name):
     """
     匯出 專輯類別 CSV 檔案。
     """
 
     # 設定被爬蟲網站 (url) 與匯出 csv 檔案的資料夾的位置 (folder_path)
-    output_path = os.path.join("csv", file_name)
+    output_path = os.path.join(os.getcwd(), "csv", file_name)
 
     # 確保資料夾存在
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -112,7 +131,7 @@ def export_to_csv_album(data_list, file_name):
     # print(data_list)
 
     # 設定被爬蟲網站 (url) 與匯出 csv 檔案的資料夾的位置 (folder_path)
-    output_path = os.path.join("csv", file_name)
+    output_path = os.path.join(os.getcwd(), "csv", file_name)
 
     # 確保資料夾存在
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -154,7 +173,8 @@ def export_to_csv_artist(data_list, file_name):
     """
 
     # 設定被爬蟲網站 (url) 與匯出 csv 檔案的資料夾的位置 (folder_path)
-    output_path = os.path.join("csv", file_name)
+    output_path = os.path.join(os.getcwd(), "csv", file_name)
+
 
     # 確保資料夾存在
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
