@@ -140,9 +140,10 @@ def export_to_csv_album(data_list, file_name):
         # 寫入標題列
         writer = csv.writer(file)
         writer.writerow([
+            "ProductID", 
             "ProductName", 
             "ArtistName", 
-            "ProductID", 
+            "ProductCode",
             "Barcode", 
             "Manufacturer", 
             "Publisher", 
@@ -153,9 +154,10 @@ def export_to_csv_album(data_list, file_name):
         # 寫入資料列
         for item in (data_list):
             writer.writerow([
+                item.get("ProductID", ""),
                 item.get("ProductName", ""),
                 item.get("ArtistName", ""),
-                item.get("ProductID", ""),
+                item.get("ProductCode", ""),
                 item.get("Barcode", ""),
                 item.get("Manufacturer", ""),
                 item.get("Publisher", ""),
