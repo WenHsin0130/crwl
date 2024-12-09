@@ -47,7 +47,7 @@ def get_product_sessions(category, page):
 def get_product_details(product_session, product_all_elements, category):
     # 從 session 取得商品的 ID，使用正則表達式尋找 cdno 後的數字 (session 範例: CDList-C.asp?cdno=445485678796)
     parts = product_session.split('cdno=')
-    cdno = parts[1].split()[0]
+    cdno = int(parts[1].split()[0])
 
     # 提取 頁面的專輯名稱與藝人區塊 <h2 class="h2">  
     product_title = product_all_elements.find("h2", class_="h2")
@@ -139,6 +139,7 @@ def fetch_product_list(url, file_name):
 
     # 取得所有專輯類別
     category_ids = get_categoryID_from_csv()
+
 
     # 根據不同專輯類別取得唱片資訊
     for category in category_ids:

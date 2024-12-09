@@ -36,11 +36,6 @@ session_list = [
     {"url": "listartam.asp?mut=M&art=A&stp=1&h=3", "category": "M", "type": "女藝人"},
     {"url": "listartam.asp?mut=M&art=A&stp=1&h=2", "category": "M", "type": "樂團團體"},
 
-    # 日語
-    {"url": "sclas_A6.asp?mut=F&s2=1", "category": "F", "type": "男藝人"},
-    {"url": "sclas_A7.asp?mut=F&s2=2", "category": "F", "type": "女藝人"},
-    {"url": "sclas_A8.asp?mut=F&s2=3", "category": "F", "type": "樂團團體"},
-
     # 台語男藝人
     {"url": "sclasca.asp?mut=C&s2=1&h=1", "category": "C", "type": "男藝人"},
     {"url": "sclasca.asp?mut=C&s2=1&h=1&gh=1", "category": "C", "type": "男藝人"},
@@ -83,7 +78,13 @@ session_list = [
     {"url": "listartame.asp?mut=B&art=W&stp=1", "category": "B", "type": ""},
     {"url": "listartame.asp?mut=B&art=X&stp=1", "category": "B", "type": ""},
     {"url": "listartame.asp?mut=B&art=Y&stp=1", "category": "B", "type": ""},
-    {"url": "listartame.asp?mut=B&art=Z&stp=1", "category": "B", "type": ""}
+    {"url": "listartame.asp?mut=B&art=Z&stp=1", "category": "B", "type": ""},
+
+    
+    # 日語
+    {"url": "sclas_A6.asp?mut=F&s2=1", "category": "F", "type": "男藝人"},
+    {"url": "sclas_A7.asp?mut=F&s2=2", "category": "F", "type": "女藝人"},
+    {"url": "sclas_A8.asp?mut=F&s2=3", "category": "F", "type": "樂團團體"},
 ]
 
 # 初始化空的 language_list 列表，用於儲存爬蟲下來的值
@@ -98,22 +99,39 @@ def get_artist(artist_all_elements, file_name, artist_type, category):
 
     Returns:
     """
+    if category=="F":
+        list_elements = artist_all_elements.find("div", class_="list")
+        td_elements = list_elements.find_all("input", type="button") # 藝人名稱
 
-    # 找到特定的 <ul> 標籤，然後選取其中的 <span class="ch">
-    list_elements = artist_all_elements.find("div", class_="list")
-    td_elements = list_elements.find_all("a", class_="box") # 藝人名稱
+        
+        for s in td_elements:
+            # 提取 span_elements 提取純文本並去掉前後的空白字符
+            artist = s.get("value", "").strip()
 
-    for s in td_elements:
-        # 提取 span_elements 提取純文本並去掉前後的空白字符
-        artist = s.text.strip()
+            if artist:  # 確保不是空字符串
+                artist_list.append({
+                    "ArtistName": artist,
+                    "ArtistType": artist_type,
+                    "ArtistCategory": category
+                })
+                # print(language)
 
-        if artist:  # 確保不是空字符串
-            artist_list.append({
-                "ArtistName": artist,
-                "ArtistType": artist_type,
-                "ArtistCategory": category
-            })
-            # print(language)
+    else:
+        # 找到特定的 <ul> 標籤，然後選取其中的 <span class="ch">
+        list_elements = artist_all_elements.find("div", class_="list")
+        td_elements = list_elements.find_all("a", class_="box") # 藝人名稱
+
+        for s in td_elements:
+            # 提取 span_elements 提取純文本並去掉前後的空白字符
+            artist = s.text.strip()
+
+            if artist:  # 確保不是空字符串
+                artist_list.append({
+                    "ArtistName": artist,
+                    "ArtistType": artist_type,
+                    "ArtistCategory": category
+                })
+                # print(language)
 
     # print(artist_list)
 

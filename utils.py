@@ -142,13 +142,17 @@ def export_to_csv_album(data_list, file_name):
         writer.writerow([
             "ProductID", 
             "ProductName", 
-            "ArtistName", 
+            "ProductDescription",
+            "ImageURL",
+            "ArtistID", 
             "ProductCode",
             "Barcode", 
             "Manufacturer", 
             "Publisher", 
             "ReleaseDate",
-            "CategoryID"
+            "CategoryID",
+            "StockQuantity",
+            "Price"
         ])
         
         # 寫入資料列
@@ -156,13 +160,17 @@ def export_to_csv_album(data_list, file_name):
             writer.writerow([
                 item.get("ProductID", ""),
                 item.get("ProductName", ""),
+                item.get("ProductDescription", ""),
+                item.get("ImageURL"),
                 item.get("ArtistName", ""),
                 item.get("ProductCode", ""),
                 item.get("Barcode", ""),
                 item.get("Manufacturer", ""),
                 item.get("Publisher", ""),
                 item.get("ReleaseDate", ""),
-                item.get("CategoryID", "")
+                item.get("CategoryID", ""),
+                item.get("StockQuantity", ""),
+                item.get("Price")
             ])
 
 

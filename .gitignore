@@ -16,4 +16,5 @@ build/
 *.db
 # Ignore all .jpg files
 *.jpg
+*.zip
 
