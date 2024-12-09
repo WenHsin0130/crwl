@@ -63,7 +63,12 @@ def get_product_details(product_session, product_all_elements, category):
 
     # 取得時間並轉換格是為 YY-mm-dd
     date_text = product_li_content[5].text.strip()
-    formatted_date = datetime.strptime(date_text, "%Y/%m/%d").strftime("%Y-%m-%d")
+    # 嘗試轉換日期格式
+    try:
+        formatted_date = datetime.strptime(date_text, "%Y/%m/%d").strftime("%Y-%m-%d")
+    except ValueError:
+        # 如果日期格式無法轉換，設為預設值 (可能是發售日未定)
+        formatted_date = "0000-00-00"
 
     # 取得 barcode 並轉換格式為 int
     barcode_text = product_li_content[0].text.strip()
@@ -135,30 +140,30 @@ def fetch_product_list(url, file_name):
     # 取得所有專輯類別
     category_ids = get_categoryID_from_csv()
 
-    # 頁面
-    page = 1
-
     # 根據不同專輯類別取得唱片資訊
     for category in category_ids:
-        print(f"---------------- Category{category} ----------------")
+        # 該類別下共 5 頁的資料
+        for page in range(1, 6):
+            print(f"---------------- Category: {category} | Page {page} ----------------")
 
-        # 將 session 結合五大唱片主連結 (url)，轉換成有意義的 url
-        product_session_list = get_product_sessions(category, page)
+            # 將 session 結合五大唱片主連結 (url)，轉換成有意義的 url
+            product_session_list = get_product_sessions(category, page)
 
-        for idx, product_session in enumerate(product_session_list):
-            product_url = urljoin(url, product_session)
+            # 取得指定專輯的連結，並且進入指定連結爬取內容
+            for idx, product_session in enumerate(product_session_list):
+                product_url = urljoin(url, product_session)
 
-            # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
-            product_all_elements = fetch_html(product_url)
+                # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
+                product_all_elements = fetch_html(product_url)
 
-            # 處理 product_all_elements 的後續操作
-            print(f"Processing category {category} at index {idx}: {product_url}")
+                # 處理 product_all_elements 的後續操作
+                print(f"Processing category {category} at index {idx}: {product_url}")
 
-            # 將 "CategoryID": category 添加到 product_details 字典中
-            product_details = get_product_details(product_session, product_all_elements, category)
+                # 將 "CategoryID": category 添加到 product_details 字典中
+                product_details = get_product_details(product_session, product_all_elements, category)
 
-            # 將 product 資料加入列表
-            product_list.extend(product_details)
+                # 將 product 資料加入列表
+                product_list.extend(product_details)
     
     # 使用爬取的資料匯出 product 的 csv 檔案
     export_to_csv_album(product_list, file_name)

@@ -32,64 +32,64 @@ session_list = [
     {"url": "sclasca.asp?mut=A&s2=4&h=4&gh=11", "category": "A", "type": "相聲表演團體"},
     
     # 韓語男藝人
-    {"url": "listartam.asp?mut=M&art=A&stp=1&h=1", "category": "B", "type": "男藝人"},
-    {"url": "listartam.asp?mut=M&art=A&stp=1&h=3", "category": "B", "type": "女藝人"},
-    {"url": "listartam.asp?mut=M&art=A&stp=1&h=2", "category": "B", "type": "樂團團體"},
+    {"url": "listartam.asp?mut=M&art=A&stp=1&h=1", "category": "M", "type": "男藝人"},
+    {"url": "listartam.asp?mut=M&art=A&stp=1&h=3", "category": "M", "type": "女藝人"},
+    {"url": "listartam.asp?mut=M&art=A&stp=1&h=2", "category": "M", "type": "樂團團體"},
 
     # 日語
-    {"url": "sclas_A6.asp?mut=F&s2=1", "category": "C", "type": "男藝人"},
-    {"url": "sclas_A7.asp?mut=F&s2=2", "category": "C", "type": "女藝人"},
-    {"url": "sclas_A8.asp?mut=F&s2=3", "category": "C", "type": "樂團團體"},
+    {"url": "sclas_A6.asp?mut=F&s2=1", "category": "F", "type": "男藝人"},
+    {"url": "sclas_A7.asp?mut=F&s2=2", "category": "F", "type": "女藝人"},
+    {"url": "sclas_A8.asp?mut=F&s2=3", "category": "F", "type": "樂團團體"},
 
     # 台語男藝人
-    {"url": "sclasca.asp?mut=C&s2=1&h=1", "category": "K", "type": "男藝人"},
-    {"url": "sclasca.asp?mut=C&s2=1&h=1&gh=1", "category": "K", "type": "男藝人"},
-    {"url": "sclasca.asp?mut=C&s2=1&h=1&gh=11", "category": "K", "type": "男藝人"},
+    {"url": "sclasca.asp?mut=C&s2=1&h=1", "category": "C", "type": "男藝人"},
+    {"url": "sclasca.asp?mut=C&s2=1&h=1&gh=1", "category": "C", "type": "男藝人"},
+    {"url": "sclasca.asp?mut=C&s2=1&h=1&gh=11", "category": "C", "type": "男藝人"},
 
     # 台語女藝人
-    {"url": "sclasca.asp?mut=C&s2=2&h=3", "category": "K", "type": "男藝人"},
-    {"url": "sclasca.asp?mut=C&s2=2&h=3&gh=1", "category": "K", "type": "男藝人"},
-    {"url": "sclasca.asp?mut=C&s2=2&h=3&gh=11", "category": "K", "type": "男藝人"},
+    {"url": "sclasca.asp?mut=C&s2=2&h=3", "category": "C", "type": "男藝人"},
+    {"url": "sclasca.asp?mut=C&s2=2&h=3&gh=1", "category": "C", "type": "男藝人"},
+    {"url": "sclasca.asp?mut=C&s2=2&h=3&gh=11", "category": "C", "type": "男藝人"},
 
     # 台語團體
-    {"url": "sclasca.asp?mut=C&s2=3&h=2", "category": "K", "type": "樂團團體"},
-    {"url": "sclasca.asp?mut=C&s2=3&h=2&gh=1", "category": "K", "type": "樂團團體"},    
-    {"url": "sclasca.asp?mut=C&s2=3&h=2&gh=11", "category": "K", "type": "樂團團體"},    
-    {"url": "sclasca.asp?mut=C&s2=3&h=2&gh=12", "category": "K", "type": "樂團團體"},
+    {"url": "sclasca.asp?mut=C&s2=3&h=2", "category": "C", "type": "樂團團體"},
+    {"url": "sclasca.asp?mut=C&s2=3&h=2&gh=1", "category": "C", "type": "樂團團體"},    
+    {"url": "sclasca.asp?mut=C&s2=3&h=2&gh=11", "category": "C", "type": "樂團團體"},    
+    {"url": "sclasca.asp?mut=C&s2=3&h=2&gh=12", "category": "C", "type": "樂團團體"},
 
     # 西洋
-    {"url": "listartame.asp?mut=B&art=A&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=B&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=C&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=D&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=E&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=F&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=G&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=H&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=I&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=J&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=D&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=L&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=M&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=N&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=O&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=P&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=Q&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=R&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=S&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=T&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=U&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=V&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=W&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=X&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=Y&stp=1", "category": "D", "type": ""},
-    {"url": "listartame.asp?mut=B&art=Z&stp=1", "category": "D", "type": ""}
+    {"url": "listartame.asp?mut=B&art=A&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=B&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=C&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=B&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=E&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=F&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=G&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=H&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=I&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=J&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=B&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=L&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=M&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=N&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=O&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=P&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=Q&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=R&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=S&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=T&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=U&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=V&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=W&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=X&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=Y&stp=1", "category": "B", "type": ""},
+    {"url": "listartame.asp?mut=B&art=Z&stp=1", "category": "B", "type": ""}
 ]
 
 # 初始化空的 language_list 列表，用於儲存爬蟲下來的值
 artist_list = []
 
-def fetch_artist_list(url, file_name, artist_list_session, artist_type, category):
+def get_artist(artist_all_elements, file_name, artist_type, category):
     """
     爬取網頁中的藝人。
 
@@ -98,14 +98,6 @@ def fetch_artist_list(url, file_name, artist_list_session, artist_type, category
 
     Returns:
     """
-    # 進入處理階段
-    print(f"session:{artist_list_session} | astist_type:{artist_type} | category:{category}")
-
-    # 取得本頁面所有元件
-    artist_list_url = urljoin(url, artist_list_session)
-
-    # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
-    artist_all_elements = fetch_html(artist_list_url)
 
     # 找到特定的 <ul> 標籤，然後選取其中的 <span class="ch">
     list_elements = artist_all_elements.find("div", class_="list")
@@ -133,9 +125,21 @@ def fetch_artist_list(url, file_name, artist_list_session, artist_type, category
         # 否則回傳 None
         return None
     
-# mut="分類" 下的 藝人列表
-for session in session_list:
-    artist_list_session = session['url']
-    artist_type = session['type']
-    category = session['category']
-    fetch_artist_list("https://www.5music.com.tw/", "artist.csv", artist_list_session, artist_type, category)
+def fetch_artist_list(url, file_name):
+    # mut="分類" 下的 藝人列表
+    for session in session_list:
+        artist_list_session = session['url']
+        artist_type = session['type']
+        category = session['category']
+
+        # 進入處理階段
+        print(f"session:{artist_list_session} | astist_type:{artist_type} | category:{category}")
+
+        # 取得本頁面所有元件
+        artist_list_url = urljoin(url, artist_list_session)
+
+        # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
+        artist_all_elements = fetch_html(artist_list_url)
+
+        # 取得所有藝人並代入 list
+        get_artist(artist_all_elements, file_name, artist_type, category)
