@@ -23,7 +23,7 @@ def get_product_sessions(category, page):
     # 取得本頁面所有元件
     all_elements = fetch_html(f"https://www.5music.com.tw/cdmus-c.asp?mut={category}&nowPage={page}")
 
-    # 獲取所有 藝人名稱
+    # 獲取所有 專輯 session
     product_session = all_elements.find_all("div", class_="record-box")
 
     # 初始化所有專輯詳細資訊的連結清單

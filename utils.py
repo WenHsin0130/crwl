@@ -81,13 +81,13 @@ def download_image(img):
         print("未找到圖片")
 
 
-def export_to_csv(data_list, file_name, index_type):
+def export_to_csv(data_list, file_name):
     """
     匯出 專輯類別 CSV 檔案。
     """
 
     # 設定被爬蟲網站 (url) 與匯出 csv 檔案的資料夾的位置 (folder_path)
-    output_path = os.path.join("fivebig", "csv", file_name)
+    output_path = os.path.join("csv", file_name)
 
     # 確保資料夾存在
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -98,15 +98,9 @@ def export_to_csv(data_list, file_name, index_type):
         writer = csv.writer(file)
         writer.writerow(["CategoryID", "Category"])
 
-        # 設定匯出索引格式
-        if index_type == 1:
-            # 使用字母索引
-            for index, name in zip(string.ascii_uppercase, data_list):
-                writer.writerow([index, name])
-        else:
-            # 使用數字索引
-            for index, name in enumerate(data_list, start=1):
-                writer.writerow([index, name])
+        # 使用字母索引
+        for index, name in zip(string.ascii_uppercase, data_list):
+            writer.writerow([index, name])
 
     print(f"'{file_name}' 檔案已成功匯出到 '{output_path}'")
 
@@ -115,10 +109,10 @@ def export_to_csv_album(data_list, file_name):
     匯出 CSV 檔案。
     """
 
-    print(data_list)
+    # print(data_list)
 
     # 設定被爬蟲網站 (url) 與匯出 csv 檔案的資料夾的位置 (folder_path)
-    output_path = os.path.join("fivebig", "csv", file_name)
+    output_path = os.path.join("csv", file_name)
 
     # 確保資料夾存在
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -127,7 +121,6 @@ def export_to_csv_album(data_list, file_name):
         # 寫入標題列
         writer = csv.writer(file)
         writer.writerow([
-            "Index", 
             "ProductName", 
             "ArtistName", 
             "ProductID", 
@@ -139,9 +132,8 @@ def export_to_csv_album(data_list, file_name):
         ])
         
         # 寫入資料列
-        for index, item in enumerate(data_list, start=1):
+        for item in (data_list):
             writer.writerow([
-                index,
                 item.get("ProductName", ""),
                 item.get("ArtistName", ""),
                 item.get("ProductID", ""),
@@ -152,5 +144,39 @@ def export_to_csv_album(data_list, file_name):
                 item.get("CategoryID", "")
             ])
 
+
+    print(f"'{file_name}' 檔案已成功匯出到 '{output_path}'")
+
+
+def export_to_csv_artist(data_list, file_name):
+    """
+    匯出 藝人 CSV 檔案。
+    """
+
+    # 設定被爬蟲網站 (url) 與匯出 csv 檔案的資料夾的位置 (folder_path)
+    output_path = os.path.join("csv", file_name)
+
+    # 確保資料夾存在
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    # 匯出 CSV 檔案
+    with open(output_path, mode="w", newline="", encoding="utf-8-sig") as file:
+        # 寫入標題列
+        writer = csv.writer(file)
+        writer.writerow([
+            "ArtistID",
+            "ArtistName",
+            "ArtistType",
+            "ArtistCategory"
+        ])
+
+        # 寫入資料列
+        for index, item in enumerate(data_list, start=1): 
+            writer.writerow([
+                index,
+                item.get("ArtistName", ""),
+                item.get("ArtistType", ""),
+                item.get("ArtistCategory", "")
+            ])
 
     print(f"'{file_name}' 檔案已成功匯出到 '{output_path}'")

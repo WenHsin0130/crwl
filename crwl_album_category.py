@@ -2,7 +2,7 @@ from utils import is_data_fetched
 from utils import fetch_html
 from utils import export_to_csv
 
-def fetch_language_list(url, file_name, index_type):
+def fetch_language_list(url, file_name):
     """
     爬取網頁中的語言名稱。
 
@@ -34,7 +34,7 @@ def fetch_language_list(url, file_name, index_type):
     # 檢查是否有資料
     if is_data_fetched(language_list):
         # 當資料數 > 1 筆回傳整個資料內容
-        export_to_csv(language_list, file_name, index_type)
+        export_to_csv(language_list, file_name)
     else:
         # 否則回傳 None
         return None

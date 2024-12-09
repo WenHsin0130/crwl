@@ -1,0 +1,16 @@
+﻿INSERT INTO category_list (CategoryID, Category) VALUES ('A', '華語');
+INSERT INTO category_list (CategoryID, Category) VALUES ('B', '韓語');
+INSERT INTO category_list (CategoryID, Category) VALUES ('C', '日語');
+INSERT INTO category_list (CategoryID, Category) VALUES ('D', '西洋');
+INSERT INTO category_list (CategoryID, Category) VALUES ('E', '爵士');
+INSERT INTO category_list (CategoryID, Category) VALUES ('F', '古典');
+INSERT INTO category_list (CategoryID, Category) VALUES ('G', '發燒‧跨界');
+INSERT INTO category_list (CategoryID, Category) VALUES ('H', '世界音樂');
+INSERT INTO category_list (CategoryID, Category) VALUES ('I', '心靈．宗教');
+INSERT INTO category_list (CategoryID, Category) VALUES ('J', '演奏系列');
+INSERT INTO category_list (CategoryID, Category) VALUES ('K', '台語');
+INSERT INTO category_list (CategoryID, Category) VALUES ('L', '黑膠唱片');
+INSERT INTO category_list (CategoryID, Category) VALUES ('M', '藍光BD');
+INSERT INTO category_list (CategoryID, Category) VALUES ('N', '影音館');
+INSERT INTO category_list (CategoryID, Category) VALUES ('O', '周邊商品');
+INSERT INTO category_list (CategoryID, Category) VALUES ('P', '兒童音樂');

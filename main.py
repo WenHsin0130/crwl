@@ -9,7 +9,7 @@ if __name__ == "__main__":
     base_url = "https://www.5music.com.tw/"
 
     # 取得語言類別資料
-    # fetch_language_list(base_url, "language_list.csv", 1)
+    fetch_language_list(base_url, "category_list.csv")
 
     # 取得所有產品(專輯唱片)資料，使用數字編號
-    fetch_product_list(base_url, "album_list.csv")
+    # fetch_product_list(base_url, "album_list.csv")
