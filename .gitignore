@@ -14,5 +14,6 @@ build/
 *.log
 *.sqlite3
 *.db
-images/
+# Ignore all .jpg files
+*.jpg
 
