@@ -229,3 +229,36 @@ def export_to_csv_artist(data_list, file_name):
             ])
 
     print(f"'{file_name}' 檔案已成功匯出到 '{output_path}'")
+
+
+def export_to_csv_disk(data_list, file_name):
+    """
+    匯出 藝人 CSV 檔案。
+    """
+    # 設定被爬蟲網站 (url) 與匯出 csv 檔案的資料夾的位置 (folder_path)
+    output_path = os.path.join(os.getcwd(), "csv", file_name)
+
+    # 確保資料夾存在
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    # 匯出 CSV 檔案
+    with open(output_path, mode="w", newline="", encoding="utf-8-sig") as file:
+        # 寫入標題列
+        writer = csv.writer(file)
+        writer.writerow([
+            "ProductID",
+            "DiskType",
+            "SerialNumber",
+            "Songs"
+        ])
+
+        # 寫入資料列
+        for item in (data_list): 
+            writer.writerow([
+                item.get("ProductID", ""),
+                item.get("DiskType", ""),
+                item.get("SerialNumber", ""),
+                item.get("Songs", "")
+            ])
+
+    print(f"'{file_name}' 檔案已成功匯出到 '{output_path}'")
