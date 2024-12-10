@@ -21,7 +21,7 @@ with open(input_csv_path, 'r', encoding='utf-8-sig') as csv_file:
             songs = row['Songs'].replace("'", "''")
             
             # 生成單行 INSERT 語句
-            sql_line = f"INSERT IGNORE INTO disk (ProductID, DiskType, SerialNumber, Songs) VALUES ({product_id}, '{disk_type}', {serial_number}, '{songs}');\n"
+            sql_line = f"INSERT INTO disk (ProductID, DiskType, SerialNumber, Songs) VALUES ({product_id}, '{disk_type}', {serial_number}, '{songs}');\n"
             
             # 寫入到 SQL 檔案中
             sql_file.write(sql_line)

@@ -90,7 +90,7 @@ def fetch_disk_list(url, file_name):
 
 
     # 根據不同專輯類別取得唱片資訊
-    for cdno in cdno_ids[:20]:
+    for cdno in cdno_ids:
         cdno = 425425698242
         # 網址商品的 session 設定
         query = f"CDList-C.asp?cdno={cdno}"
