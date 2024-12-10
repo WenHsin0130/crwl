@@ -100,6 +100,25 @@ def get_categoryID_from_csv():
     return category_ids
 
 
+def get_productID_from_csv():
+    # Specify the input CSV path
+    input_csv_path = 'csv/album_list_with_id.csv'
+
+    # Read CSV and get all ProductID values
+    product_ids = []
+
+    with open(input_csv_path, 'r', encoding='utf-8-sig') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        for row in csv_reader:
+            product_id = row['ProductID']
+            product_ids.append(product_id)
+
+    # Print all ProductID values
+    print("Successfully Get ProductID values")
+
+    return product_ids
+
+
 def export_to_csv(data_list, file_name):
     """
     匯出 專輯類別 CSV 檔案。
