@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-def fetch_html(url, timeout=60):
+def fetch_html(url, timeout=300):
     """
     發送 GET 請求並返回網頁的 BeautifulSoup 物件。
 

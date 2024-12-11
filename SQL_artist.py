@@ -21,8 +21,10 @@ with open(input_csv_path, 'r', encoding='utf-8-sig') as csv_file:
             artist_category = row['ArtistCategory'].replace("'", "''")
             
             # 生成單行 INSERT 語句
-            sql_line = f"INSERT IGNORE INTO artist (ArtistID, ArtistName, ArtistType, ArtistCategory) VALUES ({artist_id}, '{artist_name}', '{artist_type}', '{artist_category}');\n"
-            
+            # sql_line = f"INSERT IGNORE INTO artist (ArtistID, ArtistName, ArtistType, ArtistCategory) VALUES ({artist_id}, '{artist_name}', '{artist_type}', '{artist_category}');\n"
+            sql_line = f"UPDATE artist SET ArtistName = '{artist_name}', ArtistType = '{artist_type}', ArtistCategory = '{artist_category}' WHERE ArtistID = {artist_id};\n"
+
+
             # 寫入到 SQL 檔案中
             sql_file.write(sql_line)
 

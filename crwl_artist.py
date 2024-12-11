@@ -42,9 +42,9 @@ session_list = [
     {"url": "sclasca.asp?mut=C&s2=1&h=1&gh=11", "category": "C", "type": "男藝人"},
 
     # 台語女藝人
-    {"url": "sclasca.asp?mut=C&s2=2&h=3", "category": "C", "type": "男藝人"},
-    {"url": "sclasca.asp?mut=C&s2=2&h=3&gh=1", "category": "C", "type": "男藝人"},
-    {"url": "sclasca.asp?mut=C&s2=2&h=3&gh=11", "category": "C", "type": "男藝人"},
+    {"url": "sclasca.asp?mut=C&s2=2&h=3", "category": "C", "type": "女藝人"},
+    {"url": "sclasca.asp?mut=C&s2=2&h=3&gh=1", "category": "C", "type": "女藝人"},
+    {"url": "sclasca.asp?mut=C&s2=2&h=3&gh=11", "category": "C", "type": "女藝人"},
 
     # 台語團體
     {"url": "sclasca.asp?mut=C&s2=3&h=2", "category": "C", "type": "樂團團體"},

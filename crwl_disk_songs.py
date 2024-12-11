@@ -24,11 +24,13 @@ def get_disk_details(product_url, cdno):
     # 找到所有曲目表，[table1 html ..., table2 html ...]
     tables = all_disks.find_all("table", class_="table-striped")
 
+    serial_number = 1
+
     # 根據 table_titles 判斷有幾張光碟，並且使用迴圈抓取該光碟下所有曲目
     for idx, title in enumerate(table_titles):
 
         # 將光碟編號與類別分開 範例 ['DISK', '2', 'CD']
-        title = title.text.strip().split()
+        title = title.text.strip().split(" ")
 
         # 確保 title 符合範例，如果不符合則使用法 2 取得 disk_type 與 serial_number
         if len(title) < 3:
@@ -39,12 +41,13 @@ def get_disk_details(product_url, cdno):
             # 取得 第3項包含光碟類別的 li
             disk_type = product_li_content[2].text.strip()
             disk_type = re.findall(r'[A-Z]+', disk_type)
-            # print(disk_type)
-            serial_number = 1
+            disk_type = disk_type[0]
+            print(disk_type)
+            # serial_number = 1
 
         else: 
             disk_type = title[2]
-            serial_number = title[1]
+            # serial_number = title[1]
 
         # 取得目前 table 下的所有曲目
         rows = tables[idx].find_all("tr")[1:] 
@@ -58,16 +61,16 @@ def get_disk_details(product_url, cdno):
 
             # 取得每列歌曲
             song_name = cells[1].get_text(strip=True)
-            format_song_name = song_number + song_name.replace('\xa0', ' ') + "\n"
+            format_song_name = song_number + song_name.replace('\xa0', ' ') + "\\n"
             songs += format_song_name
 
         disk_list.append({
             # 專輯 ID (從 csv 獲取)
             "ProductID": cdno,
             # 專輯類別 BD/CD/DVD...
-            "DiskType": disk_type[0],
+            "DiskType": disk_type,
             # 第幾張光碟 Ex: BD"1", CD"2"
-            "SerialNumber": serial_number,
+            "SerialNumber": serial_number+idx,
             # 曲目內容
             "Songs": songs
         })

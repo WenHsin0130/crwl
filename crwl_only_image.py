@@ -1,4 +1,6 @@
 import random
+import os
+import requests
 
 from urllib.parse import urljoin
 from datetime import datetime
@@ -7,6 +9,8 @@ from utils import fetch_html
 from utils import export_to_csv_album
 from utils import download_image
 from utils import get_categoryID_from_csv
+from utils import get_productID_from_csv
+
 
 # 初始化商品列表
 product_list = []
@@ -45,31 +49,62 @@ def get_product_sessions(category, page):
 
 def main(url):
 
-    # 取得所有專輯類別
-    category_ids = get_categoryID_from_csv()
+    # 根據不同專輯類別取得唱片資訊
+    cdno_ids = get_productID_from_csv()
 
     # 根據不同專輯類別取得唱片資訊
-    for category in category_ids:
-        # 該類別下共 5 頁的資料
-        for page in range(1, 6):
-            print(f"---------------- Category: {category} | Page {page} ----------------")
+    for cdno in cdno_ids:
+        # 網址商品的 session 設定
+        query = f"CDList-C.asp?cdno={cdno}"
 
-            # 將 session 結合五大唱片主連結 (url)，轉換成有意義的 url
-            product_session_list = get_product_sessions(category, page)
+        print(f"---------------- product: {cdno} ----------------")
 
-            # 取得指定專輯的連結，並且進入指定連結爬取內容
-            for idx, product_session in enumerate(product_session_list):
-                product_url = urljoin(url, product_session)
+        # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
+        product_url = urljoin(url, query)
 
-                # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
-                product_all_elements = fetch_html(product_url)
+        # 處理 product_all_elements 的後續操作
+        print(f"Processing product {cdno} : {product_url}")
 
-                # 處理 product_all_elements 的後續操作
-                print(f"Processing category {category} at index {idx}: {product_url}")
+        # 使用自訂函式 fetch_html 取得該專輯頁面所有元件
+        product_all_elements = fetch_html(product_url)
 
-                # 取得 商品圖片 <img class="img-responsive lazy">
-                product_img = product_all_elements.find("img", class_="img-responsive lazy")
-                download_image(product_img)
+        # 取得 商品圖片 <img class="img-responsive lazy">
+        img = product_all_elements.find("img", class_="img-responsive lazy")
+        
+        # 檢查是否找到圖片
+        if img and 'data-src' in img.attrs:
+            image_src = img['data-src']
+
+            # 圖片 url 範例：https://www.5music.com.tw/cdpic/zn2/35202411134881.jpg
+            base_url = "https://www.5music.com.tw/"
+            image_url = urljoin(base_url, image_src)
+            # print("圖片 URL:", image_url)
+
+            # 下載圖片
+            try:
+                # requests.get() img_url 發送一個 GET 請求，該請求會取得網頁或資源的內容
+                response = requests.get(image_url, stream=True)
+                response.raise_for_status()  # 檢查請求是否成功
+
+                # 保存圖片的路徑
+                image_save_dir = "image/img"
+                image_name = f"{cdno}.jpg"
+
+                # 自動建立資料夾
+                os.makedirs(image_save_dir, exist_ok=True)
+
+                # 生成完整儲存路徑
+                save_path = os.path.join(image_save_dir, image_name)
+
+                # 保存圖片到指定路徑
+                with open(save_path, 'wb') as file:
+                    for chunk in response.iter_content(1024):
+                        file.write(chunk)
+
+            except requests.RequestException as e:
+                print(f"下載圖片失敗: {e}")
+        else:
+            print("未找到圖片")
 
 if __name__ == "__main__":
     main("https://www.5music.com.tw/")
